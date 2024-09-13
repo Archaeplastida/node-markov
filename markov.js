@@ -18,8 +18,7 @@ class MarkovMachine {
    *  {"the": ["cat", "hat"], "cat": ["in"], "in": ["the"], "hat": [null]} */
 
   makeChains() {
-    let chains = this.chains;
-    let idx = 0;
+    let chains = this.chains, idx = 0;
 
     for (let word of this.words) {
       if (!chains[word]) chains[word] = []; // if the word doesn't exist in the chain itself, add it.
@@ -31,14 +30,10 @@ class MarkovMachine {
     chains[this.words[this.words.length - 1]].push(null);
     return chains;
   }
-
-
   /** return random text from chains */
 
   makeText(numWords = 100) {
-    let stringOfText = "";
-
-    let chosenWord = this.words[Math.floor(Math.random() * this.words.length)]
+    let stringOfText = "", chosenWord = this.words[Math.floor(Math.random() * this.words.length)]
 
     for (let i = 0; i < numWords; i++) {
       stringOfText = stringOfText + " " + chosenWord; //add the word into stringOfText
@@ -50,6 +45,4 @@ class MarkovMachine {
   }
 }
 
-module.exports = {
-  MarkovMachine
-}
+module.exports = MarkovMachine;
